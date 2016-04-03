@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A228639D3AED9992085B09C9 /* Pods_csulb_beach_hacks_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C77BCA5DDAFBC7C9CB90F8 /* Pods_csulb_beach_hacks_project.framework */; };
+		DE25B6AD1CB09FBF00F69A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25B6AC1CB09FBF00F69A07 /* AppDelegate.swift */; };
+		DE25B6AF1CB09FBF00F69A07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25B6AE1CB09FBF00F69A07 /* ViewController.swift */; };
+		DE25B6B21CB09FBF00F69A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE25B6B01CB09FBF00F69A07 /* Main.storyboard */; };
+		DE25B6B41CB09FBF00F69A07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE25B6B31CB09FBF00F69A07 /* Assets.xcassets */; };
+		DE25B6B71CB09FBF00F69A07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE25B6B51CB09FBF00F69A07 /* LaunchScreen.storyboard */; };
+		DE25B6C21CB09FBF00F69A07 /* csulb_beach_hacks_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25B6C11CB09FBF00F69A07 /* csulb_beach_hacks_projectTests.swift */; };
+		DE25B6CD1CB09FBF00F69A07 /* csulb_beach_hacks_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25B6CC1CB09FBF00F69A07 /* csulb_beach_hacks_projectUITests.swift */; };
+		DE25B6DD1CB1BF4100F69A07 /* RecentFilesTableCtrlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25B6DC1CB1BF4100F69A07 /* RecentFilesTableCtrlr.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE25B6BE1CB09FBF00F69A07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE25B6A11CB09FBF00F69A07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE25B6A81CB09FBF00F69A07;
+			remoteInfo = "csulb beach hacks project";
+		};
+		DE25B6C91CB09FBF00F69A07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE25B6A11CB09FBF00F69A07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE25B6A81CB09FBF00F69A07;
+			remoteInfo = "csulb beach hacks project";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05C77BCA5DDAFBC7C9CB90F8 /* Pods_csulb_beach_hacks_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_csulb_beach_hacks_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D05823A9CE4D3AF41FF07CB /* Pods-csulb beach hacks project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-csulb beach hacks project.release.xcconfig"; path = "Pods/Target Support Files/Pods-csulb beach hacks project/Pods-csulb beach hacks project.release.xcconfig"; sourceTree = "<group>"; };
+		AA72E99A616C23D55469C787 /* Pods-csulb beach hacks project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-csulb beach hacks project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-csulb beach hacks project/Pods-csulb beach hacks project.debug.xcconfig"; sourceTree = "<group>"; };
+		DE25B6A91CB09FBF00F69A07 /* csulb beach hacks project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "csulb beach hacks project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE25B6AC1CB09FBF00F69A07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DE25B6AE1CB09FBF00F69A07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE25B6B11CB09FBF00F69A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE25B6B31CB09FBF00F69A07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE25B6B61CB09FBF00F69A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE25B6B81CB09FBF00F69A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE25B6BD1CB09FBF00F69A07 /* csulb beach hacks projectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "csulb beach hacks projectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE25B6C11CB09FBF00F69A07 /* csulb_beach_hacks_projectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csulb_beach_hacks_projectTests.swift; sourceTree = "<group>"; };
+		DE25B6C31CB09FBF00F69A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE25B6C81CB09FBF00F69A07 /* csulb beach hacks projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "csulb beach hacks projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE25B6CC1CB09FBF00F69A07 /* csulb_beach_hacks_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csulb_beach_hacks_projectUITests.swift; sourceTree = "<group>"; };
+		DE25B6CE1CB09FC000F69A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE25B6DC1CB1BF4100F69A07 /* RecentFilesTableCtrlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentFilesTableCtrlr.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE25B6A61CB09FBF00F69A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A228639D3AED9992085B09C9 /* Pods_csulb_beach_hacks_project.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE25B6BA1CB09FBF00F69A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE25B6C51CB09FBF00F69A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC96B080FD3AF6A479ABAD00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05C77BCA5DDAFBC7C9CB90F8 /* Pods_csulb_beach_hacks_project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE25B6A01CB09FBF00F69A07 = {
+			isa = PBXGroup;
+			children = (
+				DE25B6AB1CB09FBF00F69A07 /* csulb beach hacks project */,
+				DE25B6C01CB09FBF00F69A07 /* csulb beach hacks projectTests */,
+				DE25B6CB1CB09FBF00F69A07 /* csulb beach hacks projectUITests */,
+				DE25B6AA1CB09FBF00F69A07 /* Products */,
+				E47A2CF12CB82278E34C06E7 /* Pods */,
+				BC96B080FD3AF6A479ABAD00 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DE25B6AA1CB09FBF00F69A07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE25B6A91CB09FBF00F69A07 /* csulb beach hacks project.app */,
+				DE25B6BD1CB09FBF00F69A07 /* csulb beach hacks projectTests.xctest */,
+				DE25B6C81CB09FBF00F69A07 /* csulb beach hacks projectUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE25B6AB1CB09FBF00F69A07 /* csulb beach hacks project */ = {
+			isa = PBXGroup;
+			children = (
+				DE25B6AC1CB09FBF00F69A07 /* AppDelegate.swift */,
+				DE25B6AE1CB09FBF00F69A07 /* ViewController.swift */,
+				DE25B6B01CB09FBF00F69A07 /* Main.storyboard */,
+				DE25B6DC1CB1BF4100F69A07 /* RecentFilesTableCtrlr.swift */,
+				DE25B6B31CB09FBF00F69A07 /* Assets.xcassets */,
+				DE25B6B51CB09FBF00F69A07 /* LaunchScreen.storyboard */,
+				DE25B6B81CB09FBF00F69A07 /* Info.plist */,
+			);
+			path = "csulb beach hacks project";
+			sourceTree = "<group>";
+		};
+		DE25B6C01CB09FBF00F69A07 /* csulb beach hacks projectTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE25B6C11CB09FBF00F69A07 /* csulb_beach_hacks_projectTests.swift */,
+				DE25B6C31CB09FBF00F69A07 /* Info.plist */,
+			);
+			path = "csulb beach hacks projectTests";
+			sourceTree = "<group>";
+		};
+		DE25B6CB1CB09FBF00F69A07 /* csulb beach hacks projectUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DE25B6CC1CB09FBF00F69A07 /* csulb_beach_hacks_projectUITests.swift */,
+				DE25B6CE1CB09FC000F69A07 /* Info.plist */,
+			);
+			path = "csulb beach hacks projectUITests";
+			sourceTree = "<group>";
+		};
+		E47A2CF12CB82278E34C06E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA72E99A616C23D55469C787 /* Pods-csulb beach hacks project.debug.xcconfig */,
+				7D05823A9CE4D3AF41FF07CB /* Pods-csulb beach hacks project.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE25B6A81CB09FBF00F69A07 /* csulb beach hacks project */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE25B6D11CB09FC000F69A07 /* Build configuration list for PBXNativeTarget "csulb beach hacks project" */;
+			buildPhases = (
+				52C47D88F150E48EB8DB6881 /* Check Pods Manifest.lock */,
+				DE25B6A51CB09FBF00F69A07 /* Sources */,
+				DE25B6A61CB09FBF00F69A07 /* Frameworks */,
+				DE25B6A71CB09FBF00F69A07 /* Resources */,
+				2B0B0B458892C960C7BD13EF /* Embed Pods Frameworks */,
+				5F6BFD9D039D75A00E43F560 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "csulb beach hacks project";
+			productName = "csulb beach hacks project";
+			productReference = DE25B6A91CB09FBF00F69A07 /* csulb beach hacks project.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DE25B6BC1CB09FBF00F69A07 /* csulb beach hacks projectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE25B6D41CB09FC000F69A07 /* Build configuration list for PBXNativeTarget "csulb beach hacks projectTests" */;
+			buildPhases = (
+				DE25B6B91CB09FBF00F69A07 /* Sources */,
+				DE25B6BA1CB09FBF00F69A07 /* Frameworks */,
+				DE25B6BB1CB09FBF00F69A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE25B6BF1CB09FBF00F69A07 /* PBXTargetDependency */,
+			);
+			name = "csulb beach hacks projectTests";
+			productName = "csulb beach hacks projectTests";
+			productReference = DE25B6BD1CB09FBF00F69A07 /* csulb beach hacks projectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DE25B6C71CB09FBF00F69A07 /* csulb beach hacks projectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE25B6D71CB09FC000F69A07 /* Build configuration list for PBXNativeTarget "csulb beach hacks projectUITests" */;
+			buildPhases = (
+				DE25B6C41CB09FBF00F69A07 /* Sources */,
+				DE25B6C51CB09FBF00F69A07 /* Frameworks */,
+				DE25B6C61CB09FBF00F69A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE25B6CA1CB09FBF00F69A07 /* PBXTargetDependency */,
+			);
+			name = "csulb beach hacks projectUITests";
+			productName = "csulb beach hacks projectUITests";
+			productReference = DE25B6C81CB09FBF00F69A07 /* csulb beach hacks projectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE25B6A11CB09FBF00F69A07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Roland Gill";
+				TargetAttributes = {
+					DE25B6A81CB09FBF00F69A07 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					DE25B6BC1CB09FBF00F69A07 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = DE25B6A81CB09FBF00F69A07;
+					};
+					DE25B6C71CB09FBF00F69A07 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = DE25B6A81CB09FBF00F69A07;
+					};
+				};
+			};
+			buildConfigurationList = DE25B6A41CB09FBF00F69A07 /* Build configuration list for PBXProject "csulb beach hacks project" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE25B6A01CB09FBF00F69A07;
+			productRefGroup = DE25B6AA1CB09FBF00F69A07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE25B6A81CB09FBF00F69A07 /* csulb beach hacks project */,
+				DE25B6BC1CB09FBF00F69A07 /* csulb beach hacks projectTests */,
+				DE25B6C71CB09FBF00F69A07 /* csulb beach hacks projectUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE25B6A71CB09FBF00F69A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE25B6B71CB09FBF00F69A07 /* LaunchScreen.storyboard in Resources */,
+				DE25B6B41CB09FBF00F69A07 /* Assets.xcassets in Resources */,
+				DE25B6B21CB09FBF00F69A07 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE25B6BB1CB09FBF00F69A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE25B6C61CB09FBF00F69A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B0B0B458892C960C7BD13EF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-csulb beach hacks project/Pods-csulb beach hacks project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52C47D88F150E48EB8DB6881 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5F6BFD9D039D75A00E43F560 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-csulb beach hacks project/Pods-csulb beach hacks project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE25B6A51CB09FBF00F69A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE25B6AF1CB09FBF00F69A07 /* ViewController.swift in Sources */,
+				DE25B6DD1CB1BF4100F69A07 /* RecentFilesTableCtrlr.swift in Sources */,
+				DE25B6AD1CB09FBF00F69A07 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE25B6B91CB09FBF00F69A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE25B6C21CB09FBF00F69A07 /* csulb_beach_hacks_projectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE25B6C41CB09FBF00F69A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE25B6CD1CB09FBF00F69A07 /* csulb_beach_hacks_projectUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE25B6BF1CB09FBF00F69A07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE25B6A81CB09FBF00F69A07 /* csulb beach hacks project */;
+			targetProxy = DE25B6BE1CB09FBF00F69A07 /* PBXContainerItemProxy */;
+		};
+		DE25B6CA1CB09FBF00F69A07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE25B6A81CB09FBF00F69A07 /* csulb beach hacks project */;
+			targetProxy = DE25B6C91CB09FBF00F69A07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE25B6B01CB09FBF00F69A07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE25B6B11CB09FBF00F69A07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE25B6B51CB09FBF00F69A07 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE25B6B61CB09FBF00F69A07 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE25B6CF1CB09FC000F69A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE25B6D01CB09FC000F69A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE25B6D21CB09FC000F69A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA72E99A616C23D55469C787 /* Pods-csulb beach hacks project.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "csulb beach hacks project/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roland.csulb-beach-hacks-project";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DE25B6D31CB09FC000F69A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D05823A9CE4D3AF41FF07CB /* Pods-csulb beach hacks project.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "csulb beach hacks project/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roland.csulb-beach-hacks-project";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DE25B6D51CB09FC000F69A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "csulb beach hacks projectTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roland.csulb-beach-hacks-projectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/csulb beach hacks project.app/csulb beach hacks project";
+			};
+			name = Debug;
+		};
+		DE25B6D61CB09FC000F69A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "csulb beach hacks projectTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roland.csulb-beach-hacks-projectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/csulb beach hacks project.app/csulb beach hacks project";
+			};
+			name = Release;
+		};
+		DE25B6D81CB09FC000F69A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "csulb beach hacks projectUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roland.csulb-beach-hacks-projectUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "csulb beach hacks project";
+			};
+			name = Debug;
+		};
+		DE25B6D91CB09FC000F69A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "csulb beach hacks projectUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roland.csulb-beach-hacks-projectUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "csulb beach hacks project";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE25B6A41CB09FBF00F69A07 /* Build configuration list for PBXProject "csulb beach hacks project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE25B6CF1CB09FC000F69A07 /* Debug */,
+				DE25B6D01CB09FC000F69A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE25B6D11CB09FC000F69A07 /* Build configuration list for PBXNativeTarget "csulb beach hacks project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE25B6D21CB09FC000F69A07 /* Debug */,
+				DE25B6D31CB09FC000F69A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE25B6D41CB09FC000F69A07 /* Build configuration list for PBXNativeTarget "csulb beach hacks projectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE25B6D51CB09FC000F69A07 /* Debug */,
+				DE25B6D61CB09FC000F69A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE25B6D71CB09FC000F69A07 /* Build configuration list for PBXNativeTarget "csulb beach hacks projectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE25B6D81CB09FC000F69A07 /* Debug */,
+				DE25B6D91CB09FC000F69A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE25B6A11CB09FBF00F69A07 /* Project object */;
+}
