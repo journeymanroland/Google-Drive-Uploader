@@ -7,89 +7,119 @@
 //
 
 import Foundation
-import AeroGearHttp
-import AeroGearOAuth2
-
+import GoogleSignIn
+import GoogleAPIClientForREST
 
 class GoogleDrive {
-    private let API_KEY = "AIzaSyB_AU3yNes270-XurqQDomz7HidNEJuXv0"
-    private let BASE_URL = "https://www.googleapis.com/auth/drive"
-    private let GET_PATH = "https://www.googleapis.com/drive/v3/files"
-    private let UPLOAD_PATH = "https://www.googleapis.com/upload/drive/v3/files"
-    var http: Http!
-    var fileNames = [AnyObject]()
+    var defaults = UserDefaults.standard
+    let gdService: GTLRDriveService
+    var viewCtrlr: UIViewController?
+    // upload file
     
-    func newFile(title: String, contents: String) {
-        let data = contents.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let multiPartData = MultiPartData(data: data!, name: "text", filename: title, mimeType: "text/html")
-        let multiPartArray = ["file": multiPartData]
-        
-        http.request(.POST, path: UPLOAD_PATH, parameters: multiPartArray, completionHandler: { (response, error) in
-            if (error != nil) {
-                print("Error posting file: \(error)")
-            } else {
-                print("upload successful, \(response)")
-            }
-        })
+    init(gdService: GTLRDriveService) {
+        self.gdService = gdService
     }
     
-    func postDoc(title: String, contents: String) {
-        let data = contents.dataUsingEncoding(NSUTF8StringEncoding)
+    func newFile(folderID: String?, title: String, data: Data, mimeType: String) {
+        let file = GTLRDrive_File()
+        file.name = title
+        if let folder = folderID {
+            file.parents = [folder]
+        }
+        let uploadParameters = GTLRUploadParameters(data: data, mimeType: mimeType)
+        let query = GTLRDriveQuery_FilesCreate.query(withObject: file, uploadParameters: uploadParameters)
         
-        let multiPartData = MultiPartData(data: data!, name: "text", filename: title, mimeType: "text/html")
-        let multiPartArray = ["file": multiPartData]
-        
-        http.request(.POST, path: UPLOAD_PATH, parameters: multiPartArray, completionHandler: { (response, error) in
-            if (error != nil) {
-                print("Error posting file: \(error)")
-            } else {
-                print("upload successful, \(response)")
+        gdService.uploadProgressBlock = { _, totalBytesUploaded, totalBytesExpectedToUpload in
+            print(totalBytesUploaded / totalBytesExpectedToUpload)
+        }
+
+        gdService.executeQuery(query) { (response, result, error) in
+            guard error == nil else {
+                self.uploadAlert(title: "Upload failed:", message: "\(error!.localizedDescription)", viewCtrlr: self.viewCtrlr!)
+                // fatalError(error!.localizedDescription)
+                return
             }
-        })
-    }
-    
-    func postImage(image: NSData) {
-        let multiPartData = MultiPartData(data: image, name: "image", filename: "new", mimeType: "image/png")
-        let multiPartArray =  ["file" : multiPartData]
-        self.http.request(.POST, path: UPLOAD_PATH, parameters: multiPartArray, completionHandler: { (response, error) in
-            if error != nil {
-                print("Error uploading image \(error)")
-            } else {
-                print("noice! \(response)")
-            }
-        })
-    }
-    
-    func googleSignIn()  {
-        self.http = Http() // use to perform http requests
-        
-        let testConfig = GoogleConfig(clientId: "284685562281-41nlugn9enua9f79emfsbo6d5up6gghp.apps.googleusercontent.com", scopes: [BASE_URL])
-        
-        let googModule = OAuth2Module(config: testConfig)
-        http.authzModule = googModule
-        
-        http.request(.GET, path: GET_PATH, parameters: ["orderBy" :"recency desc"], completionHandler: { (response, error) in
-            if (error != nil) {
-                print("ERROR: \(error)")
-            } else {
-                print("YAASSSS: \(response)")
-                // serialize JSON
-                if let resp = response,  // unwrap response
-                    let jsonDict = resp as? [String: AnyObject] {
-                    //print(jsonDict)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        let files = jsonDict["files"] as! NSArray
-                        for file in files {
-                            //print(file["name"]!)
-                            self.fileNames.append(file["name"]!!) // get list of IDs
-                        }
-                        //print(self.fileNames)
-                    })
-                }
-            }
-        })
-        
+            self.uploadAlert(title: "Upload successful", message: "Document posted to Google Drive 👍🏼", viewCtrlr: self.viewCtrlr!)
+        }
     }
 
+    // MARK: get list of files by name or mimeType
+    func get(fileName: String = "", mimeType: String = "", parentId: String?, onComplete: @escaping ([Any]?, Error?) -> ()) {
+        var folderList = [GTLRDrive_File]()
+        // set up query
+        let query = GTLRDriveQuery_FilesList.query()
+        
+        if let parentID = parentId {
+            query.q = "'\(parentID)' in parents"
+        } else {
+            query.q = "mimeType='\(mimeType)' and name contains '\(fileName)'"
+        }
+        gdService.executeQuery(query) { (ticket, response, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            if let fList = response as? GTLRDrive_FileList {
+                folderList = fList.files!
+                let strList: [GDFile] = folderList.map({GDFile(fileName: $0.name!, fileId: $0.identifier!, mimeType: $0.mimeType!)})
+                // print(strList)
+                onComplete(strList, error)
+            } else {
+                onComplete(nil, error)
+            }
+        }
+    }
+    
+    // MARK: get single file with contents
+    func getFile(fileID: String, mimeType:String, onComplete: @escaping (GTLRDataObject?, Error?) -> ()) {
+        let query = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: fileID)
+        gdService.executeQuery(query) { (ticket, file, error) in
+            onComplete(file as? GTLRDataObject, error)
+        }
+    }
+
+    // MARK: get (export) a Google Doc
+    func export(fileID: String, mimeType: String, onComplete: @escaping (GTLRDataObject?, Error?) -> ()) {
+        let query = GTLRDriveQuery_FilesExport.queryForMedia(withFileId: fileID, mimeType: mimeType)
+        gdService.executeQuery(query) { (ticket, file, error) in
+            onComplete(file as? GTLRDataObject, error)
+        }
+    }
+    
+    func uploadAlert(title: String, message: String, viewCtrlr: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        viewCtrlr.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func createFolder(_ name: String, onCompleted: @escaping (Any?, Error?) -> ()) {
+        let file = GTLRDrive_File()
+        file.name = name
+        file.mimeType = MimeType.folder.rawValue//"application/vnd.google-apps.folder"
+        
+        let query = GTLRDriveQuery_FilesCreate.query(withObject: file, uploadParameters: nil)
+        query.fields = "id"
+        
+        gdService.executeQuery(query) { (ticket, folder, error) in
+            onCompleted((folder as? GTLRDrive_File)?.identifier, error)
+        }
+    }
+    
+}
+
+enum MimeType: String {
+    case folder = "application/vnd.google-apps.folder"
+    case googleDoc = "application/vnd.google-apps.document"
+    // Export only supports Google Docs.
+    case pdf = "application/pdf"
+    case sheet = "application/vnd.google-apps.spreadsheet"
+}
+
+struct GDFile {
+    let fileName: String
+    let fileId: String
+    let mimeType: String
 }

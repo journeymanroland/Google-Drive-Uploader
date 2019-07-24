@@ -4,15 +4,8 @@
 use_frameworks!
 
 target 'csulb beach hacks project' do
-pod 'AeroGearOAuth2'
-pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'GoogleSignIn'
+pod 'GoogleAPIClientForREST/Drive'
 end
 
-target 'csulb beach hacks projectTests' do
-
-end
-
-target 'csulb beach hacks projectUITests' do
-
-end
 

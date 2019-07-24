@@ -7,79 +7,112 @@
 //
 
 import UIKit
-import AeroGearHttp
-import AeroGearOAuth2
-import MobileCoreServices
+import GoogleSignIn
+import GoogleAPIClientForREST
+import GTMSessionFetcher
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var http: Http!
-    private let API_KEY = "AIzaSyB_AU3yNes270-XurqQDomz7HidNEJuXv0"
-    private let BASE_URL = "https://www.googleapis.com/auth/drive"
-    private let GET_PATH = "https://www.googleapis.com/drive/v3/files"
-    private let UPLOAD_PATH = "https://www.googleapis.com/upload/drive/v3/files"
-    let gd = GoogleDrive()
-    var fileNames = [AnyObject]()
+class ViewController: UIViewController, UINavigationControllerDelegate, GIDSignInUIDelegate {
+    var gd: GoogleDrive?
+    let gdService = GTLRDriveService()
+    var googleUser: GIDGoogleUser?
+    var retrievedFiles = [Any]()
+    var activityIndicator = UIActivityIndicatorView(style: .gray)
+    //let signInMessage = "Signed in to Google Drive."
     
-    @IBOutlet weak var newDocTitle: UITextField!
-    @IBOutlet weak var newDocContents: UITextView!
+    @IBOutlet weak var signInLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gd.googleSignIn()
-        
+        // configure Google Drive
+        // gdSignIn()
+        self.navigationItem.hidesBackButton = true
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
     
-    @IBAction func postToDrive(sender: UIBarButtonItem) {
-        if let title = newDocTitle.text,
-            let contents = newDocContents.text {
-            gd.newFile(title, contents: contents)
-        }
-        
+    override func viewDidAppear(_ animated: Bool) {
+        GTMSessionFetcher.setLoggingEnabled(true)
+        let labelAnimation: CATransition = CATransition()
+        labelAnimation.duration = 1.0
+        labelAnimation.type = .fade
+        signInLabel.layer.add(labelAnimation, forKey: "changeTextTransition")
+        gdSignIn()
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "show recent files" {
-            if let tblCtrlr = segue.destinationViewController as? RecentFilesTableCtrlr {
-                tblCtrlr.recentFiles = self.fileNames
+    
+    func gdSignIn() {
+        if let googleSignIn = GIDSignIn.sharedInstance() {
+            GIDSignIn.sharedInstance().delegate = self
+            GIDSignIn.sharedInstance().uiDelegate = self
+            GIDSignIn.sharedInstance()?.scopes = [kGTLRAuthScopeDrive]
+            
+            // alert user of sign in
+            
+            // check if user is already signed in
+            if googleSignIn.hasAuthInKeychain() {
+                print("\nAlready signed in\n")
+                googleSignIn.signInSilently()
+            } else {
+                GIDSignIn.sharedInstance()?.signIn()
             }
         }
-    }
-    
-    
-    @IBAction func takePicture(sender: AnyObject) {
-        let imgPicker = UIImagePickerController()
-        //if imgPicker.isSourceTypeAvailable {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            imgPicker.allowsEditing = false
-            imgPicker.sourceType = .Camera
-            imgPicker.cameraCaptureMode = .Photo
-            imgPicker.modalPresentationStyle = .FullScreen
-            presentViewController(imgPicker, animated: true, completion: nil)
-        }
-    }
-    
-    
-    @IBAction func pickImgFromCameraRoll(sender: UIBarButtonItem) {
-        let imgPicker = UIImagePickerController()
-        imgPicker.delegate = self
-        imgPicker.sourceType = .PhotoLibrary
-        self.presentViewController(imgPicker, animated: true, completion: nil)
+        gd = GoogleDrive(gdService: gdService)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-        if let chosenImg: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
-        let data = UIImagePNGRepresentation(chosenImg) {
-            gd.postImage(data)
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+//        let defaults = UserDefaults.standard
+//        var nUploads = 1
+//        if let numCameraUploads = defaults.object(forKey: "Camera upload") as? Int {
+//           defaults.set(numCameraUploads + 1, forKey: "Camera upload")
+//            nUploads = numCameraUploads
+//        }
+//        if let chosenImg: UIImage = info[.originalImage] as? UIImage,
+//            let data = chosenImg.pngData() {
+//            gd!.newFile(title: "Camera upload \(nUploads)", data: data, mimeType: "image/png")
+//        }
+//        self.dismiss(animated: true, completion: nil)
+//        
+//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let gdFoldersTVC = segue.destination as? GoogleDriveFoldersTableCtrlr {
+            gdFoldersTVC.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "file")
+            gdFoldersTVC.allFolders = retrievedFiles as! [GDFile]
+            gdFoldersTVC.gd = self.gd
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
     }
-    
 }
 
+extension ViewController: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            gdService.authorizer = user.authentication.fetcherAuthorizer()
+            googleUser = user
+
+            // self.signInLabel.text = signInMessage
+            gd?.get(mimeType: "application/vnd.google-apps.folder", parentId: nil, onComplete: {(folders, error) in
+               guard error == nil else {
+                    print(error.debugDescription)
+                    return
+                }
+                self.signInLabel.text = "Signed in!"
+                self.retrievedFiles = folders! as! [GDFile]
+                self.performSegue(withIdentifier: "loggedIn", sender: self)
+            })
+        }
+    }
+}
+
+extension UITextView {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if text.contains("Enter text here...") {
+            text = ""
+        }
+    }
+}
